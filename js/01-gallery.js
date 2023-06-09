@@ -34,9 +34,9 @@ function createGalleryElement(items) {
 function onGalleryItemClick(event) {
   event.preventDefault();
 
-  let target = event.target;
-  let clickedItemEl = target.closest('.gallery__item');
-  let { original, description } = clickedItemEl.dataset;
+  // let target = event.target;
+  // let clickedItemEl = target.closest('.gallery__item');
+  // let { original, description } = clickedItemEl.dataset;
 
   const modalEl = basicLightbox.create(
     `<img src=${original} alt=${description} width=1400 height=900>`

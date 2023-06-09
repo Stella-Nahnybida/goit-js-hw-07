@@ -34,34 +34,12 @@ function createGalleryElement(items) {
 function onGalleryItemClick(event) {
   event.preventDefault();
 
-  let target = event.target;
-  let clickedItemEl = target.closest('.gallery__item');
-  let { original, description } = clickedItemEl.dataset;
-
-  //----------------------------
-
-  let gallery = new SimpleLightbox('.gallery a');
-  gallery.on('show.simplelightbox', function () {
-    // do something…
+  let lightbox = new SimpleLightbox('.gallery a', {
+    captions: true,
+    captionsData: 'alt',
+    captionPosition: 'bottom',
+    captionDelay: '250',
   });
-
-  //   const modalEl = basicLightbox.create(
-  //     `<img src=${original} alt=${description} width=1400 height=900>`
-  //   );
-  //   modalEl.show();
-
-  //   const closeModalByEsc = function (event) {
-  //     if (event.key === 'Escape') {
-  //       console.log('Escape!');
-  //       modalEl.close();
-  //     }
-  //   };
-
-  //   if (modalEl.visible()) {
-  //     console.log('addEventListener!');
-  //     window.addEventListener('keydown', closeModalByEsc);
-  //   } else window.removeEventListener('keydown', closeModalByEsc);
-  //-----------------------------
 }
 
 function initGallery(items) {
