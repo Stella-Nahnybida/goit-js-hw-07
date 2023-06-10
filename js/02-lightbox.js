@@ -1,35 +1,18 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
-const galleryItemsEl = document.querySelector('.gallery');
 
-function createGalleryElement(items) {
-  let galleryElements = items.map(item => {
-    let itemEl = document.createElement('li');
-    itemEl.classList.add('gallery__item');
-    itemEl.dataset.preview = item.preview;
-    itemEl.dataset.original = item.original;
-    itemEl.dataset.description = item.description;
+const galleryEl = document.querySelector('.gallery');
 
-    let linkEl = document.createElement('a');
-    linkEl.classList.add('gallery__link');
-    linkEl.href = item.original;
-    linkEl.title = item.description;
+const galleryItemsEL = galleryItems
+  .map(
+    galleryItem =>
+      `<li class="gallery__item"><a  class="gallery__link" href="${galleryItem.original}"><img class="gallery__image" src="${galleryItem.preview}" alt="${galleryItem.description}"/></a></li>`
+  )
+  .join('\n');
 
-    itemEl.appendChild(linkEl);
+galleryEl.insertAdjacentHTML('afterbegin', galleryItemsEL);
 
-    let imgEl = document.createElement('img');
-    imgEl.classList.add('gallery__image');
-    imgEl.src = item.preview;
-    imgEl.alt = item.description;
-
-    linkEl.appendChild(imgEl);
-    console.log(itemEl);
-    return itemEl;
-  });
-
-  galleryItemsEl.append(...galleryElements);
-  return galleryItemsEl;
-}
+galleryEl.addEventListener('click', onGalleryItemClick);
 
 function onGalleryItemClick(event) {
   event.preventDefault();
@@ -41,10 +24,3 @@ function onGalleryItemClick(event) {
     captionDelay: '250',
   });
 }
-
-function initGallery(items) {
-  let galleryItemsEl = createGalleryElement(items);
-  galleryItemsEl.addEventListener('click', onGalleryItemClick);
-}
-
-initGallery(galleryItems);
