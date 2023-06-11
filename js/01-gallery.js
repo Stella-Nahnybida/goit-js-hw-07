@@ -11,10 +11,11 @@ const galleryItemsEL = galleryItems
   .join('\n');
 
 galleryEl.insertAdjacentHTML('afterbegin', galleryItemsEL);
+galleryEl.addEventListener('click', onImgClick);
 
 const instance = basicLightbox.create(`<img src="" alt="" >`, {
   onShow: instance => {
-    window.addEventListener('keydown', onImgClick);
+    window.addEventListener('keydown', onEscClick);
   },
   onClose: instance => {
     window.addEventListener('keydown', onEscClick);

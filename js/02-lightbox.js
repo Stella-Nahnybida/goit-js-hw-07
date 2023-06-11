@@ -12,15 +12,9 @@ const galleryItemsEL = galleryItems
 
 galleryEl.insertAdjacentHTML('afterbegin', galleryItemsEL);
 
-galleryEl.addEventListener('click', onGalleryItemClick);
-
-function onGalleryItemClick(event) {
-  event.preventDefault();
-
-  let lightbox = new SimpleLightbox('.gallery a', {
-    captions: true,
-    captionsData: 'alt',
-    captionPosition: 'bottom',
-    captionDelay: '250',
-  });
-}
+let lightbox = new SimpleLightbox('.gallery a', {
+  captions: true,
+  captionsData: 'alt',
+  captionPosition: 'bottom',
+  captionDelay: '250',
+});
