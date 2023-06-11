@@ -11,7 +11,6 @@ const galleryItemsEL = galleryItems
   .join('\n');
 
 galleryEl.insertAdjacentHTML('afterbegin', galleryItemsEL);
-galleryEl.addEventListener('click', onImgClick);
 
 const instance = basicLightbox.create(`<img src="" alt="" >`, {
   onShow: instance => {
@@ -21,6 +20,8 @@ const instance = basicLightbox.create(`<img src="" alt="" >`, {
     window.addEventListener('keydown', onEscClick);
   },
 });
+
+galleryEl.addEventListener('click', onImgClick);
 
 function onImgClick(event) {
   event.preventDefault();
